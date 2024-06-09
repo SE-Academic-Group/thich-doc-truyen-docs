@@ -1,0 +1,44 @@
+# Getting Started
+
+Mong là trước khi bạn đọc phần này thì bạn đã đọc qua các phần tổng quan trước đó. Nếu chưa, bạn có thể xem lại ở [Trang chủ](/), hoặc [Kiến trúc](/architecture).
+
+## Yêu cầu
+
+Dưới đây là yêu cầu về môi trường phát triển để có thể phát triển giao diện cho dự án **Thích Đọc Truyện**.
+
+- [Nodejs](https://nodejs.org/en) >= 18.0.0
+- [pnpm](https://pnpm.io) >= 9.0.0
+- Backend Server (API Server) đã được cài đặt và chạy xem thêm tại [Backend Getting Started](/backend/getting-started) hoặc [Backend Docker](/backend/getting-started).
+
+## Cài đặt
+
+Chi tiết xem tại [GitHub Repo](https://github.com/SE-Academic-Group/thich-doc-truyen-frontend).
+
+Để cài đặt môi trường phát triển, bạn có thể thực hiện các bước sau:
+
+1. Clone repository về máy
+
+```bash copy
+git clone https://github.com/SE-Academic-Group/thich-doc-truyen-frontend.git thich-doc-truyen-frontend
+```
+
+2. Tạo file `.env.local` trong thư mục gốc của dự án với nội dung sau:
+
+```env copy
+NEXT_PUBLIC_API_URL=http://localhost:8080 # URL của API Server
+```
+
+3. Cài đặt các dependencies
+
+```bash copy
+pnpm install
+```
+
+4. Chạy ứng dụng
+
+```bash copy
+pnpm dev
+```
+
+5. Mở trình duyệt và truy cập vào http://localhost:3000
+
