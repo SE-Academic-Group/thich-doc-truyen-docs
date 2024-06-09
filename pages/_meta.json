@@ -1,9 +1,6 @@
 {
   "index": "Introduction",
-  "about": {
-    "title": "About",
-    "type": "page"
-  },
+  "architecture": "Architecture Overview",
   "contact": {
     "title": "Contact ↗",
     "type": "page",

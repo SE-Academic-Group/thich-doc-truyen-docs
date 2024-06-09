@@ -1,0 +1,39 @@
+# Tổng quan về kiến trúc
+
+Dưới đây là cái nhìn tổng quan về kiến trúc phần mềm (ứng dụng web) của dự án **Thích Đọc Truyện** cùng với lý do chọn lựa các công nghệ.
+
+## Mô hình kiến trúc
+
+Dự án sử dụng kiến trúc **Client - Server**, trong đó:
+- **Client** cung cấp giao diện người dùng (ở đây, Client cũng là một server).
+- **API Server** thực hiện việc cào dữ liệu khi có yêu cầu từ Client.
+
+
+![Kiến trúc](.github/architecture-overview.png)
+
+## Client (Next.js)
+
+Ở đây, Next.js sẽ đóng vai trò là một Client Server, cung cấp giao diện cho người dùng. Nó cung cấp mã **HTML** nếu như có thể render ở server, hoặc mã **JavaScript** nếu như cần render ở client.
+Client Server có thể sẽ gọi trực tiếp API server để lấy dữ liệu. Hoặc gửi mã JavaScript về trình duyệt (client agent) để lấy dữ liệu từ API server.
+
+Next.js cung cấp khả năng xây dụng một ứng dụng web hiện đại với đa dạng các chiến thuật như:
+
+- Static Rendering
+- Dynamic Rendering
+- Streaming
+- Partial Prerendering
+
+Từ đó giúp trải nghiệm người dùng tốt hơn.
+
+
+Chi tiết tham khảo tại [Frontend Architecture](/frontend/architecture)
+
+## API Server (Java Spring Boot)
+
+Ở đây, API Server sẽ cung cấp các dịch vụ cần thiết cho Client Server. Dịch vụ chính đó là **cào dữ liệu** từ các trang web truyện.
+
+Để có thể áp dụng một cách dễ dàng các design patterns, SOLID, ... nhóm quyết định sử dụng Java Spring Boot để xây dựng API Server.
+
+Spring Boot cung cấp Dependency Injection, Auto Configuration, Embedded Server, ... giúp việc phát triển ứng dụng nhanh chóng và dễ dàng.
+
+Chi tiết tham khảo tại [Backend Architecture](/backend/architecture)
