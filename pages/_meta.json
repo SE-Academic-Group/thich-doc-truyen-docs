@@ -1,6 +1,7 @@
 {
   "index": "Introduction",
   "architecture": "Architecture Overview",
+  "code-organization": "Code Organization",
   "contact": {
     "title": "Contact ↗",
     "type": "page",

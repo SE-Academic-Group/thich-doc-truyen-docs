@@ -1,0 +1,59 @@
+# Code Organization
+
+Toàn bộ dự án sử dụng **Git** (VCS) để quản lý mã nguồn. Mỗi dự án sẽ có một repository riêng trên **GitHub**. Mỗi repository sẽ chứa mã nguồn, tài liệu, và các file cấu hình liên quan.
+
+## Git Workflow
+
+Đối với **Frontend** repo nhóm sử dụng [**GitHub Flow**](https://docs.github.com/en/get-started/using-github/github-flow)
+
+Đối với **Backend** repo nhóm sử dụng [**Git Flow**](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
+
+Mỗi thành viên trong nhóm sẽ tạo một branch mới. Khi hoàn thành, thành viên sẽ tạo một pull request để merge code vào branch chính.
+
+## Git Commit Message
+
+Mỗi commit cần có một message rõ ràng, dễ hiểu, và theo chuẩn [**Conventional Commit**](https://www.conventionalcommits.org/en/v1.0.0/)
+
+## GitHub Repositories
+
+Dưới đây là danh sách các repository của dự án:
+
+- [**Frontend**](https://github.com/SE-Academic-Group/thich-doc-truyen-frontend) - Mã nguồn của phần giao diện người dùng (Next.js);
+- [**Backend**](https://github.com/SE-Academic-Group/thich-doc-truyen-backend) - Mã nguồn của phần xử lý logic và cung cấp dữ liệu (Java Spring Boot);
+- [**Documentation**](https://github.com/SE-Academic-Group/thich-doc-truyen-docs) - Tài liệu hướng dẫn sử dụng, cài đặt, và phát triển dự án (Trang hiện tại).
+
+Ngoài ra, nhóm còn sử dụng một repository làm trung tâm cho việc quản lý mã nguồn [thich-doc-truyen-app](https://github.com/SE-Academic-Group/thich-doc-truyen-app)
+
+## Docker &&  Docker Hub
+
+Nhầm thuận tiện cho việc trao đổi giữa các thành viên trong nhóm, chúng tôi sử dụng **Docker Hub** để chia sẻ các image Docker đã build sẵn. Các image này sẽ được sử dụng để chạy các container trong môi trường phát triển và triển khai.
+
+Docker image của [API SERVER](https://hub.docker.com/repository/docker/sdteamvippro/novel-aggregator/general) giúp bên nhóm phát triển giao diện thuận tiên hơn khi không cần phải cài đặt môi trường phát triển.
+
+## Coding Conventions
+
+Để đảm bảo mã nguồn dễ đọc, dễ hiểu, và dễ bảo trì, nhóm tuân thủ các quy tắc viết mã sau:
+
+### Naming conventions
+
+1. Tên biến và hàm: `camelCase`
+2. Tên class: `PascalCase`
+3. Tên hằng số: `UPPER_CASE`
+
+### Code style
+1. Không khai báo các biến, hàm không được sử dụng
+2. Một dòng code không nên quá dài (> 80 ký tự)
+3. Sử dụng dấu cách sau dấu phẩy `,` và dấu chấm phẩy `;`
+4. Sử dụng dấu cách trước và sau toán tử
+
+### IDE - Editor Configuration
+1. Tab size: 4 spaces cho API và 2 spaces cho Frontend
+2. Auto format code khi save
+3. Sử dụng extension Prettier để format code
+4. Sử dụng ESLint để kiểm tra lỗi code
+
+### Principles
+1. **DRY** (Don't Repeat Yourself): Không lặp lại mã nguồn
+2. **KISS** (Keep It Simple, Stupid): Giữ mã nguồn đơn giản
+3. **YAGNI** (You Aren't Gonna Need It): Không viết mã không cần thiết
+4. **SOLID** (Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, Dependency Inversion): Nguyên lý thiết kế hướng đối tượng
