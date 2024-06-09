@@ -1,0 +1,55 @@
+# Tests
+
+Tuy dự án có ý tưởng đơn giản nhưng do nhóm thiếu kinh nghiệm viết code dễ dàng cho viết test, nên việc viết test là một phần quan trọng giúp chúng ta đảm bảo chất lượng code và giảm thiểu lỗi. Cũng khó! 🫡
+
+## Unit & Integration Testing
+
+Chạy lệnh sau để chạy test:
+
+```bash copy
+pnpm test
+```
+
+Để viết test ở phần này, hãy tạo file `.spec.ts` hoặc `.test.ts` trong thư mục `src` hoặc `tests` với vị trí tương đối file cần test.
+
+Ví dụ về cách viết test:
+
+```typescript filename="src/sum.ts" copy
+const sum = (a: number, b: number) => a + b;
+```
+
+```typescript filename="src/sum.test.ts" copy
+import { sum } from './sum';
+
+test('adds 1 + 2 to equal 3', () => {
+  expect(sum(1, 2)).toBe(3);
+});
+```
+
+## End-to-End (e2e) Testing
+
+Chạy lệnh sau để chạy test:
+
+```bash copy
+pnpm test:e2e
+```
+
+Để viết test ở phần này, hãy tạo file `.spec.ts` trong thư mục `e2e` với vị trí tương đối file cần test.
+
+Ví dụ về cách viết test:
+
+```typescript filename="e2e/home.spec.ts" copy
+import { expect, test } from "@playwright/test";
+
+test.beforeEach(async ({ page }) => {
+  await page.goto("http://localhost:3000/");
+});
+
+test("has search form with relevant input", async ({ page }) => {
+  expect(await page.isVisible("input[type=search]#search-input")).toBeTruthy();
+});
+```
+
+## Lưu ý
+
+- Để chạy test e2e, cần chạy server trước bằng lệnh `pnpm dev`
