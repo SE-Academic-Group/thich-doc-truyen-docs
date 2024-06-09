@@ -1,0 +1,31 @@
+# Frontend Architecture
+
+Để có thể bắt đầu làm việc với dự án frontend của chúng ta, đầu tiên hãy nắm rõ kiến trúc của dự án tại [Architecture Overview](/architecture).
+
+## Overview
+
+Dự án lấy ý tưởng kiến trúc và kỹ thuật từ **Next.js** và áp dụng thêm các pattern phổ biến như:
+
+- **Skeleton Loading** với **RSC**, **SWR**, và React **Suspense**
+- **Error Handling** với **React Error Boundary**
+- **API Fetching** và **Caching** với **SWR** và native **fetch API**
+
+## Architecture
+
+Dự án áp dụng pattern [Modularizing React Application](https://martinfowler.com/articles/modularizing-react-apps.html) có phần tương tự mô hình **MVC**. Mỗi module sẽ chứa các thành phần React (Next.js) cho UI, các hàm xử lý logic, và các hàm gọi API.
+
+```bash
+/src
+├── app   # routing, layout, error, loading, other Next.js features
+├── data  # API fetching, caching, and data manipulation
+├── hooks # custom hooks - logic for components
+├── lib   # utility functions
+├── types # typescript types/models/domain objects
+└── ui    # reusable components
+```
+
+Sơ đồ biểu diễn sự phụ thuộc của các thành phần
+
+![Kiến trúc](.github/frontend/frontend-architecture.png)
+
+Kiến trúc này giúp chúng ta dễ dàng tuân thủ các nguyên tắc  **DRY** và **Separation of Concerns**.
