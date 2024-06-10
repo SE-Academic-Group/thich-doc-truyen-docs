@@ -1,0 +1,64 @@
+# Data Design
+
+Phần này cung cấp thiết kế dữ liệu của dự án Thích Đọc Truyện Backend, mô tả các thực thể chính và mối quan hệ giữa chúng.
+
+## Tổng Quan
+
+Dự án Thích Đọc Truyện Backend bao gồm các thực thể chính như `NovelSearchResult`, `NovelDetail`, `ChapterInfo`, `ChapterDetail`. Các thực thể này không cần phải lưu trữ trong cơ sở dữ liệu chỉ dùng để chứa dữ liệu và trả về cho người dùng.
+
+## Các Thực Thể Chính
+
+### NovelSearchResult
+
+Thực thể `NovelSearchResult` đại diện cho kết quả tìm kiếm truyện.
+
+- **title**: Tiêu đề của truyện.
+- **author**: Tác giả của truyện.
+- **image**: URL đến ảnh bìa của truyện.
+- **url**: URL của truyện sử dụng để lấy `NovelDetail` và danh sách cách chapter.
+
+### NovelDetail
+
+Thực thể `NovelDetail` đại diện cho chi tiết của một truyện và có các trường dữ liệu được kế thừa từ NovelSearchResult
+
+- **description**: Mô tả chi tiết về truyện.
+- **genres**: Danh sách các thể loại của truyện.
+
+### ChapterInfo
+
+Thực thể `ChapterInfo` đại diện cho thông tin cơ bản của một chương truyện.
+
+- **title**: Tiêu đề của chương.
+- **index**: Số thứ tự của chương.
+- **url**: URL đến nội dung chi tiết của chương.
+
+### ChapterDetail
+
+Thực thể `ChapterDetail` đại diện cho chi tiết của một chương truyện.
+
+- **title**: Tiêu đề của chương.
+- **novelTitle**: Tiêu đề của truyện.
+- **url**: URL của chi tiết chương.
+- **content**: Nội dung chi tiết của chương.
+
+## Mối Quan Hệ Giữa Các Thực Thể
+
+- **NovelSearchResult** và **NovelDetail**: `NovelSearchResult` chứa các thông tin cơ bản về truyện, trong khi `NovelDetail` chứa thông tin chi tiết hơn.
+- **ChapterInfo** và **ChapterDetail**: `ChapterInfo` chứa thông tin cơ bản về chương, trong khi `ChapterDetail` chứa nội dung chi tiết của chương.
+
+
+### Sơ Đồ Quan Hệ
+
+Dưới đây là sơ đồ quan hệ giữa các thực thể:
+
+```plaintext
+   +-------------------+       1        +-------------------+       *        +-------------------+
+   | NovelSearchResult | <------------> |    NovelDetail    | <------------> |    ChapterInfo    |
+   +-------------------+                +-------------------+                +-------------------+
+                                                                                        ^
+                                                                                        |  1
+                                                                                        |
+                                                                                        v
+                                                                              +-------------------+
+                                                                              |  ChapterDetail    |
+                                                                              +-------------------+
