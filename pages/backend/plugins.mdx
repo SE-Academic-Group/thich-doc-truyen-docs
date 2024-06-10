@@ -44,3 +44,51 @@ Chức năng này lấy thông tin chương dựa trên URL của truyện và c
 
 Chức năng này cho phép người dùng lưu trữ và xem ngoại tuyến.
 
+## Tạo Một Plugin Mới
+
+Để tạo một plugin mới, bạn cần kế thừa các lớp `BaseCrawler` nếu cào dữ liệu từ website hoặc `BaseApi` nếu nhận dữ liệu từ API. Sau đó, thêm plugin vào hệ thống bằng cách đặt nó vào thư mục `src/main/java/com/hcmus/group11/novelaggregator/plugin/plugins`.
+
+
+### Các Bước Tạo Plugin Mới
+
+1. **Tạo Lớp Plugin Mới**
+   - Nếu cào dữ liệu từ website, kế thừa lớp `BaseCrawler`.
+   - Nếu nhận dữ liệu từ API, kế thừa lớp `BaseApi`.
+
+2. **Implement Các Phương Thức Cần Thiết**
+   - Thực hiện các phương thức như `search`, `getNovelDetail`, `getChapterList`, `getChapterDetail`, v.v. để lấy và xử lý dữ liệu từ nguồn truyện.
+
+3. **Đặt Plugin Vào Thư Mục**
+   - Đặt lớp plugin mới vào thư mục `src/main/java/com/hcmus/group11/novelaggregator/plugin/plugins`.
+
+### Ví Dụ
+
+#### Tạo Plugin Cào Dữ Liệu
+
+```java
+package com.hcmus.group11.novelaggregator.plugin.plugins;
+
+import com.hcmus.group11.novelaggregator.plugin.BaseCrawler;
+import com.hcmus.group11.novelaggregator.type.*;
+
+import java.util.List;
+
+public class ExampleCrawlerPlugin extends BaseCrawler {
+    @Override
+    public String getPluginName() {
+        return "Example Crawler Plugin";
+    }
+
+    @Override
+    public String getPluginUrl() {
+        return "https://example.com";
+    }
+
+    @Override
+    public List<NovelSearchResult> search(String keyword, Integer page) {
+        // Implement search logic
+    }
+
+    // Implement other methods...
+}
+
