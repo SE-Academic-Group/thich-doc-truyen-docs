@@ -1,0 +1,46 @@
+# Plugin System
+
+Phần này mô tả hệ thống plugin của dự án Thích Đọc Truyện Backend và các chức năng mà plugin có thể thực hiện.
+
+## Tổng Quan
+
+Hệ thống plugin của Thích Đọc Truyện Backend được thiết kế để tích hợp dễ dàng với các nguồn truyện khác nhau. Mỗi plugin sẽ tương tác với một nguồn truyện cụ thể, lấy dữ liệu và trả về thông tin theo định dạng chuẩn của hệ thống. Điều này cho phép hệ thống mở rộng và cập nhật các nguồn truyện một cách linh hoạt mà không cần thay đổi cấu trúc chính của hệ thống.
+
+## Các Chức Năng Chính
+
+### 1. Tìm Kiếm Truyện
+
+Chức năng này cho phép người dùng tìm kiếm truyện theo từ khóa. Plugin sẽ gửi yêu cầu tìm kiếm đến nguồn truyện và trả về danh sách các truyện phù hợp với từ khóa tìm kiếm.
+
+### 2. Lấy Thông Tin Chi Tiết Truyện
+
+Chức năng này lấy thông tin chi tiết của một truyện, bao gồm tiêu đề, tác giả, mô tả, và các thể loại của truyện. Thông tin này giúp người dùng hiểu rõ hơn về nội dung và các đặc điểm của truyện.
+
+### 3. Lấy Danh Sách Chương
+
+Chức năng này lấy danh sách các chương của một truyện. Danh sách này bao gồm tiêu đề và số thứ tự của các chương, cho phép người dùng dễ dàng duyệt qua các chương của truyện.
+
+### 4. Lấy Chi Tiết Chương
+
+Chức năng này lấy nội dung chi tiết của một chương, bao gồm tiêu đề chương, nội dung và các thông tin liên quan. Điều này giúp người dùng đọc chương truyện trực tiếp từ hệ thống.
+
+### 5. Lấy Danh Sách Đầy Đủ Các Chương
+
+Chức năng này cung cấp toàn bộ danh sách các chương của một truyện, cho phép người dùng duyệt qua tất cả các chương mà không cần tải từng trang riêng lẻ.
+
+### 6. Chuẩn Hóa Chuỗi
+
+Chức năng này chuẩn hóa chuỗi ký tự, có thể loại bỏ hoặc giữ khoảng trắng theo yêu cầu. Điều này giúp đồng nhất dữ liệu từ các nguồn khác nhau.
+
+### 7. Tìm Truyện Tương Tự
+
+Chức năng này tìm truyện tương tự dựa trên tiêu đề và tác giả. Điều này giúp người dùng tìm kiếm các truyện có nội dung hoặc phong cách tương tự.
+
+### 8. Lấy Thông Tin Chương Theo URL Và Chỉ Số Chương
+
+Chức năng này lấy thông tin chương dựa trên URL của truyện và chỉ số chương, giúp truy xuất nhanh chóng và chính xác.
+
+### 9. Chuyển đổi truyện thành các định dạng khác như PDF, EPUB, IMAGES.
+
+Chức năng này cho phép người dùng lưu trữ và xem ngoại tuyến.
+
