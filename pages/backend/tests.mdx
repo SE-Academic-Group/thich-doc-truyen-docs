@@ -1,0 +1,35 @@
+# Tests
+
+Phần này cung cấp hướng dẫn chi tiết về việc thực hiện kiểm thử cho dự án Thích Đọc Truyện Backend bằng JUnit.
+
+## Giới Thiệu
+
+JUnit là một framework phổ biến để viết và chạy các bài kiểm thử đơn vị trong Java. Nó giúp đảm bảo rằng mã nguồn của bạn hoạt động đúng như mong đợi và giúp phát hiện sớm các lỗi tiềm ẩn trong quá trình phát triển. Với JUnit, bạn có thể viết các bài kiểm thử cho từng thành phần nhỏ trong mã nguồn (như các phương thức và lớp) để đảm bảo tính đúng đắn của chúng.
+
+## Cách Thực Hiện Kiểm Thử Bằng JUnit
+
+### Viết Các Bài Kiểm Thử
+
+Các bài kiểm thử đơn vị thường được viết trong thư mục `src/test/java`. Trong các bài kiểm thử này, bạn sẽ sử dụng các annotation của JUnit như `@Test` để đánh dấu các phương thức kiểm thử.
+
+### Ví Dụ Về Bài Kiểm Thử Đơn Giản
+
+```java
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+
+public class ExampleTest {
+    @Test
+    void addition() {
+        assertEquals(2, 1 + 1);
+    }
+}
+```
+
+### Chạy kiểm thử
+Để chạy các bài kiểm thử, bạn có thể sử dụng lệnh Maven:
+
+```bash copy
+mvn test
+```
+Lệnh này sẽ chạy tất cả các bài kiểm thử trong dự án và hiển thị kết quả kiểm thử.
