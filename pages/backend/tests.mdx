@@ -14,22 +14,96 @@ Các bài kiểm thử đơn vị thường được viết trong thư mục `sr
 
 ### Ví Dụ Về Bài Kiểm Thử Đơn Giản
 
-```java
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Test;
+Giả sử bạn có một lớp `Calculator` với các phương thức `add`, `subtract`, `multiply`, và `divide`.
 
-public class ExampleTest {
+```java
+public class Calculator {
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public int subtract(int a, int b) {
+        return a - b;
+    }
+
+    public int multiply(int a, int b) {
+        return a * b;
+    }
+
+    public int divide(int a, int b) throws IllegalArgumentException {
+        if (b == 0) {
+            throw new IllegalArgumentException("Division by zero");
+        }
+        return a / b;
+    }
+}
+```
+
+Để viết các JUnit test cho các phương thức, đầu tiên phải có JUnit dependency trong project. Nếu sử dụng Maven, ta có thể thêm dependency dưới đây vào `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.13.2</version>
+    <scope>test</scope>
+</dependency>
+```
+
+Tiếp theo, tạo một lớp kiểm thử `CalculatorTest.java`:
+
+```java
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class CalculatorTest {
+
     @Test
-    void addition() {
-        assertEquals(2, 1 + 1);
+    public void testAdd() {
+        Calculator calculator = new Calculator();
+        assertEquals(5, calculator.add(2, 3));
+        assertEquals(0, calculator.add(-2, 2));
+        assertEquals(-5, calculator.add(-2, -3));
+    }
+
+    @Test
+    public void testSubtract() {
+        Calculator calculator = new Calculator();
+        assertEquals(1, calculator.subtract(3, 2));
+        assertEquals(-4, calculator.subtract(-2, 2));
+        assertEquals(1, calculator.subtract(-2, -3));
+    }
+
+    @Test
+    public void testMultiply() {
+        Calculator calculator = new Calculator();
+        assertEquals(6, calculator.multiply(2, 3));
+        assertEquals(-4, calculator.multiply(-2, 2));
+        assertEquals(6, calculator.multiply(-2, -3));
+    }
+
+    @Test
+    public void testDivide() {
+        Calculator calculator = new Calculator();
+        assertEquals(2, calculator.divide(6, 3));
+        assertEquals(-2, calculator.divide(-6, 3));
+        assertEquals(2, calculator.divide(-6, -3));
+    }
+
+    @Test
+    public void testDivideByZero() {
+        Calculator calculator = new Calculator();
+        calculator.divide(1, 0);
     }
 }
 ```
 
 ### Chạy kiểm thử
+
 Để chạy các bài kiểm thử, bạn có thể sử dụng lệnh Maven:
 
 ```bash copy
 mvn test
 ```
+
 Lệnh này sẽ chạy tất cả các bài kiểm thử trong dự án và hiển thị kết quả kiểm thử.
