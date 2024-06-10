@@ -1,0 +1,32 @@
+# Docker
+
+Phần này giải thích cách sử dụng Docker với dự án Thích Đọc Truyện Backend, bao gồm cách tự động build Docker image và đẩy lên Docker Hub bằng GitHub Actions.
+
+## Tự Động Build và Đẩy Docker Image
+
+Dự án sử dụng GitHub Actions để tự động build Docker image và đẩy lên Docker Hub tại địa chỉ [sdteamvippro/novel-aggregator](https://hub.docker.com/repository/docker/sdteamvippro/novel-aggregator).
+
+### Quy Trình Tự Động
+
+Quy trình tự động được thiết lập để khi có bất kỳ thay đổi nào được đẩy lên nhánh `main` hoặc `develope` trên GitHub, hệ thống sẽ tự động thực hiện các bước sau:
+
+1. **Build Docker Image**: Sử dụng Dockerfile để build image từ mã nguồn mới nhất.
+2. **Đăng Nhập Docker Hub**: Sử dụng thông tin đăng nhập được bảo mật trong GitHub Secrets.
+3. **Đẩy Docker Image Lên Docker Hub**: Đẩy image đã build lên Docker Hub tại repository `sdteamvippro/novel-aggregator`.
+
+### Cách chạy dự án với docker image dùng cho Frontend
+
+1. Pull image về máy
+
+```bash copy
+docker pull sdteamvippro/novel-aggregator:latest
+
+```
+
+2. Chạy dự án ở phía Frontend
+
+```bash copy
+docker run -p 8080:8080 sdteamvippro/novel-aggregator:latest
+
+```
+
