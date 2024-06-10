@@ -42,12 +42,12 @@ public class Calculator {
 Để viết các JUnit test cho các phương thức, đầu tiên phải có JUnit dependency trong project. Nếu sử dụng Maven, ta có thể thêm dependency dưới đây vào `pom.xml`:
 
 ```xml
-<dependency>
-    <groupId>junit</groupId>
-    <artifactId>junit</artifactId>
-    <version>4.13.2</version>
-    <scope>test</scope>
-</dependency>
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>5.8.1</version>
+        <scope>test</scope>
+    </dependency>
 ```
 
 Tiếp theo, tạo một lớp kiểm thử `CalculatorTest.java`:
