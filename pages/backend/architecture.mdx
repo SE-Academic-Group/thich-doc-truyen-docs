@@ -1,0 +1,49 @@
+# BACKEND ARCHITECHTURE
+
+Phần này cung cấp tổng quan về kiến trúc hệ thống của dự án Thích Đọc Truyện Backend.
+
+## Tổng Quan
+Dự án Thích Đọc Truyện Backend được xây dựng bằng Spring Boot, với dịch vụ chính là `NovelService`. Dịch vụ này sẽ gọi các plugin tương ứng của từng nguồn truyện và trả về dữ liệu cho người dùng.
+
+## Các Thành Phần
+
+- **NovelController**: Đóng vai trò là cổng vào duy nhất cho tất cả các yêu cầu từ phía người dùng. Nó định tuyến các yêu cầu đến dịch vụ `NovelService`.
+- **NovelService**: Quản lý và xử lý các yêu cầu liên quan đến truyện. Dịch vụ này gọi các plugin tương ứng của từng nguồn truyện (ví dụ: truyenfull.vn, tangthuvien.vn, thichtruyen.vn) để lấy dữ liệu và trả về cho người dùng.
+- **PluginManager**: Để quản lý các plugin và nhiệm vụ chính là giúp xác định plugin nào được sử dụng trong `NovelService`.
+- **Plugins**: Mỗi plugin tương ứng với một nguồn truyện, chịu trách nhiệm gọi API của nguồn truyện đó và hoặc truy cập WEBSITE trả về dữ liệu theo định dạng chuẩn của hệ thống.
+
+## Luồng Dữ Liệu
+
+Luồng dữ liệu trong hệ thống diễn ra theo các bước sau:
+1. Người dùng gửi yêu cầu đến `NovelController`.
+2. API Gateway định tuyến yêu cầu đến `NovelService`.
+3. `NovelService` xác định nguồn truyện cần truy vấn và gọi plugin tương ứng nhờ 'PluginManager`.
+4. Plugin gọi API của nguồn truyện, lấy dữ liệu và trả về `NovelService`.
+5. `NovelService` xử lý dữ liệu và gửi phản hồi về `NovelController`.
+6.`NovelController` gửi phản hồi cuối cùng đến người dùng.
+
+
+## Sơ Đồ Kiến Trúc
+
+Dưới đây là sơ đồ minh họa kiến trúc hệ thống:
+
+```plaintext
+   +-------------+          +--------------------+          +-----------------+
+   |  Người dùng  |  --->   |  NovelController   |  --->   |   NovelService   |
+   +-------------+          +--------------------+          +-----------------+
+                                                                     |
+                                                                     |
+                                                                     v
+                                                           +-------------------+
+                                                           |   PluginManager   |
+                                                           +-------------------+
+                                                                     |
+                                                                     v
+                                                               +----------+
+                                                               | Plugins  |
+                                                               +----------+
+                                                                     |
+                                                                     v
+                                                             +-----------------+
+                                                             |  Nguồn Truyện   |
+                                                             +-----------------+
